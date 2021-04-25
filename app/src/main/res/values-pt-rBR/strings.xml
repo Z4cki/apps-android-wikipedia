@@ -7,6 +7,7 @@
 * BarbaraAckles
 * Cainamarques
 * Caçador de Palavras
+* Cooltey
 * Dbrant
 * Deskana
 * Dianakc
@@ -18,6 +19,7 @@
 * Felipe L. Ewald
 * Fitoschido
 * Fúlvio
+* Gustavo.moraes
 * HenriqueCrang
 * Iohanen
 * Lowvy
@@ -232,6 +234,7 @@
   <string name="cc_0_url">https://creativecommons.org/publicdomain/zero/1.0/deed.pt</string>
   <string name="android_app_edit_help_url">https://m.mediawiki.org/wiki/Wikimedia_Apps/Suggested_edits/pt-br</string>
   <string name="suggested_edits_image_tags_help_url">https://www.mediawiki.org/wiki/Wikimedia_Apps/Suggested_edits/pt-br</string>
+  <string name="suggested_edits_image_recs_help_url">https://www.mediawiki.org/wiki/Wikimedia_Apps/Suggested_edits/pt-br#Train_image_algorithm</string>
   <string name="about_libraries_heading">Bibliotecas usadas</string>
   <string name="about_contributors_heading">Colaboradores</string>
   <string name="about_contributors">&lt;a href=\"https://www.mediawiki.org/wiki/Wikimedia_Apps/Team/Android\"&gt;Página da equipe&lt;/a&gt;</string>
@@ -452,9 +455,13 @@
   <string name="reading_list_name_hint">Nome da lista</string>
   <string name="reading_list_description_hint">Descrição (opcional)</string>
   <string name="reading_list_item_deleted">%s removido da lista</string>
+  <string name="reading_list_item_deleted_from_list">%1$s removido de %2$s</string>
   <plurals name="reading_list_articles_deleted">
     <item quantity="one">%d artigo removido da lista</item>
     <item quantity="other">%d artigos removidos da lista</item>
+  </plurals>
+  <plurals name="reading_list_articles_deleted_from_list">
+    <item quantity="other">um=%d artigo removido de %s</item>
   </plurals>
   <string name="reading_list_items_deleted">%d artigos removidos da lista</string>
   <string name="reading_lists_item_deleted">%s removido das listas</string>
@@ -462,12 +469,6 @@
   <string name="reading_list_deleted">%s apagada</string>
   <string name="saved_list_empty_title">Nenhuma página salva ainda</string>
   <string name="reading_lists_empty_message">Adicione itens à lista para ler, mesmo quando você está desconectado.</string>
-  <string name="reading_lists_onboarding_intro">Adicione artigos a uma lista para ler mais tarde, mesmo quando você está desconectado!</string>
-  <string name="reading_lists_onboarding_for_example">Por exemplo</string>
-  <string name="reading_lists_onboarding_example1">Lugares para visitar</string>
-  <string name="reading_lists_onboarding_example2">Animais favoritos</string>
-  <string name="reading_lists_onboarding_example3">Exploração espacial</string>
-  <string name="reading_lists_onboarding_got_it">Entendi</string>
   <string name="reading_list_empty">Você não tem artigos adicionados a esta lista.</string>
   <string name="reading_list_article_offline">Disponível offline</string>
   <string name="reading_list_article_make_offline">Disponibilizar este artigo offline</string>
@@ -692,6 +693,7 @@
   <string name="description_ends_with_punctuation">O texto não deve terminar com pontuação.</string>
   <string name="description_starts_with_article">Evite começar com artigos como \"a\", \"o\" \"as\" ou \"os\".</string>
   <string name="description_starts_with_uppercase">Comece com uma letra minúscula, a menos que a primeira palavra seja um nome próprio.</string>
+  <string name="description_starts_with_lowercase">Evitar começar com uma letra minúscula.</string>
   <string name="description_is_in_different_language">O texto parece estar em um idioma inesperado. O idioma deve ser %s.</string>
   <string name="description_edit_success_saved">Descrição do artigo publicada!</string>
   <string name="description_edit_success_saved_snackbar">Descrição do artigo publicada!</string>
@@ -755,6 +757,7 @@
   <string name="suggested_edits_image_preview_dialog_caption_in_language_title">Legenda da imagem (%s)</string>
   <string name="suggested_edits_image_preview_dialog_description_in_language_title">Descrição da imagem (%s)</string>
   <string name="suggested_edits_image_preview_dialog_image">Imagem</string>
+  <string name="suggested_edits_image_preview_dialog_file_commons">Arquivo do Wikimedia Commons</string>
   <string name="suggested_edits_image_preview_dialog_artist">Artista</string>
   <string name="suggested_edits_image_preview_dialog_tags">Etiquetas</string>
   <string name="suggested_edits_image_preview_dialog_date">Data</string>
@@ -875,6 +878,16 @@
     <item quantity="one">Você adicionou %d caractere</item>
     <item quantity="other">Você adicionou %d caracteres</item>
   </plurals>
+  <string name="suggested_edits_image_recommendations_task_title">Algoritmo de treinamento de imagem</string>
+  <string name="suggested_edits_image_recommendations_task_detail">Decida se uma imagem sugerida irá melhorar um artigo.</string>
+  <string name="suggested_edits_image_recommendations_task_get_started">Iniciar</string>
+  <string name="suggested_edits_image_recommendations_task_goal_progress">Ótimo, continue! 👍</string>
+  <string name="suggested_edits_image_recommendations_task_goal_complete">Objetivo diário alcançado! 👏</string>
+  <string name="suggested_edits_image_recommendations_task_goal_surpassed">Você alcançou a meta</string>
+  <string name="suggested_edits_image_recommendations_onboarding_tooltip">Uma nova tarefa de edições sugeridas agora está disponível. Treine um algoritmo para combinar imagens com artigos não ilustrados.</string>
+  <string name="suggested_edits_image_recommendations_onboarding_text1">Os artigos da Wikipédia são escritos e editados por milhares de voluntários de todo o mundo. Infelizmente, muitos artigos não têm imagens.\n\nAs imagens serão sugeridas a você usando um algoritmo. O algoritmo irá extrair imagens de outras fontes e sugerir uma correspondência com um artigo que não possui uma imagem.\n\nSeu feedback nos ajudará a melhorar as sugestões ao longo do tempo. Como o objetivo desta tarefa é melhorar as imagens sugeridas, as correspondências que você fizer não serão publicadas neste momento.</string>
+  <string name="suggested_edits_image_recommendations_onboarding_text2">Gostaríamos de agradecer suas contribuições para esse esforço. Você gostaria que seu nome de usuário fosse exibido em nossa página de treinamento de algoritmo?</string>
+  <string name="suggested_edits_image_recommendations_onboarding_consent">Sim, meu nome de usuário pode ser exibido na página de treinamento de algoritmo</string>
   <string name="file_page_activity_title">Página do arquivo</string>
   <string name="file_page_add_image_caption_button">Adicionar legenda à imagem</string>
   <string name="file_page_add_image_tags_button">Adicionar marcações de imagem</string>
@@ -950,6 +963,28 @@
   <string name="account_editing_blocked_dialog_cancel_button_text">Cancelar</string>
   <string name="edit_type_all">Todas as contribuições</string>
   <string name="content_description_for_page_indicator">Página %1$d de %2$d</string>
+  <string name="image_recommendations_task_accept">Sim</string>
+  <string name="image_recommendations_task_reject">Não</string>
+  <string name="image_recommendations_task_not_sure">Talvez</string>
+  <string name="image_recommendations_task_processing">Processando...</string>
+  <string name="image_recommendations_task_instruction">Você adicionaria esta imagem ao artigo?</string>
+  <string name="image_recommendations_task_choice_no">Por que você selecionou não?</string>
+  <string name="image_recommendations_task_choice_unsure">Por que você não tem certeza sobre esta imagem?</string>
+  <string name="image_recommendations_task_choice_not_relevant">Não é relevante</string>
+  <string name="image_recommendations_task_choice_low_quality">Baixa qualidade</string>
+  <string name="image_recommendations_task_choice_noinfo">Não é informação suficiente</string>
+  <string name="image_recommendations_task_choice_nosubject">Não sei esse assunto</string>
+  <string name="image_recommendations_task_choice_offensive">Ofensiva</string>
+  <string name="image_recommendations_task_choice_invisible">Não consigo ver a imagem</string>
+  <string name="image_recommendations_task_choice_understand">Não entendo a tarefa</string>
+  <string name="image_recommendations_task_choice_language">Não consigo ler o idioma</string>
+  <string name="image_recommendations_task_choice_other">Outro</string>
+  <string name="image_recommendations_task_choice_continue">Continuar</string>
+  <string name="image_recommendations_task_suggestion_reason">&lt;b&gt;Motivo da sugestão:&lt;/b&gt; %s</string>
+  <string name="image_recommendations_faq">FAQ</string>
+  <string name="image_recommendations_tooltip1">Revise este artigo para entender seu tópico.</string>
+  <string name="image_recommendations_tooltip2">Inspecione a imagem e suas informações associadas.</string>
+  <string name="image_recommendations_tooltip3">Decida se a imagem ajudará os leitores a entender melhor este tópico.</string>
   <string name="wikitext_bold">Negrito</string>
   <string name="wikitext_italic">Itálico</string>
   <string name="wikitext_link">Link</string>

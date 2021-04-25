@@ -80,8 +80,6 @@ import org.wikipedia.json.GsonUtil;
 import org.wikipedia.language.LangLinksActivity;
 import org.wikipedia.login.LoginActivity;
 import org.wikipedia.media.AvPlayer;
-import org.wikipedia.media.DefaultAvPlayer;
-import org.wikipedia.media.MediaPlayerImplementation;
 import org.wikipedia.page.action.PageActionTab;
 import org.wikipedia.page.leadimages.LeadImagesHandler;
 import org.wikipedia.page.leadimages.PageHeaderView;
@@ -241,7 +239,7 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
         }
 
         @Override
-        public void onSearchTabSelected() {
+        public void onFindInPageTabSelected() {
             showFindInPage();
         }
 
@@ -516,12 +514,14 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
     }
 
     public void onPageMetadataLoaded() {
+        updateBookmarkAndMenuOptions();
         if (model.getPage() == null) {
             return;
         }
         editHandler.setPage(model.getPage());
         refreshView.setEnabled(true);
         refreshView.setRefreshing(false);
+
         requireActivity().invalidateOptionsMenu();
         initPageScrollFunnel();
 
@@ -605,15 +605,6 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
             return;
         }
 
-        // If it's a Special page, launch it in an external browser, since mobileview
-        // doesn't support the Special namespace.
-        // TODO: remove when Special pages are properly returned by the server
-        // If this is a Talk page also show in external browser since we don't handle those pages
-        // in the app very well at this time.
-        if (title.isSpecial()) {
-            visitInExternalBrowser(requireActivity(), Uri.parse(title.getUri()));
-            return;
-        }
         dismissBottomSheet();
         HistoryEntry historyEntry = new HistoryEntry(title, HistoryEntry.SOURCE_INTERNAL_LINK);
         if (model.getTitle() != null) {
@@ -804,6 +795,7 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
 
         model.setTitle(title);
         model.setCurEntry(entry);
+        model.setPage(null);
         model.setReadingListPage(null);
         model.setForceNetwork(isRefresh);
 
@@ -821,7 +813,6 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
         closePageScrollFunnel();
         pageFragmentLoadState.load(pushBackStack);
         scrollTriggerListener.setStagedScrollY(stagedScrollY);
-        updateBookmarkAndMenuOptions();
     }
 
     /**
@@ -837,7 +828,23 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
             return;
         }
         pageActionTabsCallback.updateBookmark(model.isInReadingList());
+
+        boolean buttonsEnabled = model.getPage() != null && !model.shouldLoadAsMobileWeb();
+        setBottomBarButtonEnabled(PageActionTab.ADD_TO_READING_LIST, buttonsEnabled);
+        setBottomBarButtonEnabled(PageActionTab.CHOOSE_LANGUAGE, buttonsEnabled);
+        setBottomBarButtonEnabled(PageActionTab.FONT_AND_THEME, buttonsEnabled);
+        setBottomBarButtonEnabled(PageActionTab.VIEW_TOC, buttonsEnabled);
+        tocHandler.setEnabled(false);
+
         requireActivity().invalidateOptionsMenu();
+    }
+
+
+    @SuppressWarnings("checkstyle:magicnumber")
+    private void setBottomBarButtonEnabled(PageActionTab button, boolean enabled) {
+        View view = tabLayout.getChildAt(button.code());
+        view.setEnabled(enabled);
+        view.setAlpha(enabled ? 1f : 0.5f);
     }
 
     public void updateBookmarkAndMenuOptionsFromDao() {
@@ -909,46 +916,52 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
     }
 
     void showFindInPage() {
-        if (model.getPage() == null) {
+        if (model.getTitle() == null) {
             return;
         }
-        final FindInPageFunnel funnel = new FindInPageFunnel(app, model.getTitle().getWikiSite(),
-                model.getPage().getPageProperties().getPageId());
-        final FindInWebPageActionProvider findInPageActionProvider
-                = new FindInWebPageActionProvider(this, funnel);
 
-        startSupportActionMode(new ActionMode.Callback() {
-            @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                MenuItem menuItem = menu.add(R.string.menu_page_find_in_page);
-                menuItem.setActionProvider(findInPageActionProvider);
-                menuItem.expandActionView();
-                setToolbarElevationEnabled(false);
-                return true;
+        bridge.evaluate(JavaScriptActionHandler.expandCollapsedTables(true), msg -> {
+            if (!isAdded()) {
+                return;
             }
+            final FindInPageFunnel funnel = new FindInPageFunnel(app, model.getTitle().getWikiSite(),
+                    model.getPage() != null ? model.getPage().getPageProperties().getPageId() : -1);
+            final FindInWebPageActionProvider findInPageActionProvider
+                    = new FindInWebPageActionProvider(this, funnel);
 
-            @Override
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                mode.setTag("actionModeFindInPage");
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                return false;
-            }
-
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-                if (webView == null || !isAdded()) {
-                    return;
+            startSupportActionMode(new ActionMode.Callback() {
+                @Override
+                public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                    MenuItem menuItem = menu.add(R.string.menu_page_find_in_page);
+                    menuItem.setActionProvider(findInPageActionProvider);
+                    menuItem.expandActionView();
+                    setToolbarElevationEnabled(false);
+                    return true;
                 }
-                funnel.setPageHeight(webView.getContentHeight());
-                funnel.logDone();
-                webView.clearMatches();
-                hideSoftKeyboard();
-                setToolbarElevationEnabled(true);
-            }
+
+                @Override
+                public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                    mode.setTag("actionModeFindInPage");
+                    return false;
+                }
+
+                @Override
+                public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                    return false;
+                }
+
+                @Override
+                public void onDestroyActionMode(ActionMode mode) {
+                    if (webView == null || !isAdded()) {
+                        return;
+                    }
+                    funnel.setPageHeight(webView.getContentHeight());
+                    funnel.logDone();
+                    webView.clearMatches();
+                    hideSoftKeyboard();
+                    setToolbarElevationEnabled(true);
+                }
+            });
         });
     }
 
@@ -1021,7 +1034,6 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
         return bridge.isLoading();
     }
 
-    @SuppressWarnings("checkstyle:magicnumber")
     private void setBookmarkIconForPageSavedState(boolean pageSaved) {
         View bookmarkTab = tabLayout.getChildAt(PageActionTab.ADD_TO_READING_LIST.code());
         if (bookmarkTab != null) {
@@ -1029,8 +1041,6 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
                     AppCompatResources.getDrawable(requireContext(), pageSaved
                             ? R.drawable.ic_bookmark_white_24dp
                             : R.drawable.ic_bookmark_border_white_24dp), null, null);
-            bookmarkTab.setEnabled(!model.shouldLoadAsMobileWeb());
-            bookmarkTab.setAlpha(model.shouldLoadAsMobileWeb() ? 0.5f : 1f);
         }
     }
 
@@ -1069,8 +1079,15 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
                 startGalleryActivity(title.getPrefixedText());
             }
 
-            @Override public WikiSite getWikiSite() {
+            @Override
+            @NonNull
+            public WikiSite getWikiSite() {
                 return model.getTitle().getWikiSite();
+            }
+
+            @Override
+            public void setWikiSite(@NonNull WikiSite wikiSite) {
+                // ignore
             }
         };
         bridge.addListener("link", linkHandler);
@@ -1141,15 +1158,14 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
         });
         bridge.addListener("pronunciation", (String messageType, JsonObject messagePayload) -> {
             if (avPlayer == null) {
-                avPlayer = new DefaultAvPlayer(new MediaPlayerImplementation());
-                avPlayer.init();
+                avPlayer = new AvPlayer();
             }
             if (avCallback == null) {
                 avCallback = new AvCallback();
             }
             if (!avPlayer.isPlaying() && messagePayload.has("url")) {
                 updateProgressBar(true);
-                avPlayer.play(UriUtil.resolveProtocolRelativeUrl(messagePayload.get("url").getAsString()), avCallback, avCallback);
+                avPlayer.play(UriUtil.resolveProtocolRelativeUrl(messagePayload.get("url").getAsString()), avCallback);
             } else {
                 updateProgressBar(false);
                 avPlayer.stop();
@@ -1162,7 +1178,8 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
             } else if ("languages".equals(itemType)) {
                 startLangLinksActivity();
             } else if ("lastEdited".equals(itemType) && model.getTitle() != null) {
-                visitInExternalBrowser(requireContext(), Uri.parse(model.getTitle().getWebApiUrl("action=history")));
+                PageTitle title = new PageTitle("Special:History/" + model.getTitle().getPrefixedText(), model.getTitle().getWikiSite());
+                loadPage(title, new HistoryEntry(title, HistoryEntry.SOURCE_INTERNAL_LINK));
             } else if ("coordinate".equals(itemType) && model.getPage() != null && model.getPage().getPageProperties().getGeo() != null) {
                 GeoUtil.sendGeoIntent(requireActivity(), model.getPage().getPageProperties().getGeo(), model.getPage().getDisplayTitle());
             } else if ("disambiguation".equals(itemType)) {
@@ -1321,6 +1338,7 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
     }
 
     @Override
+    @Nullable
     public List<PageReferences.Reference> getReferencesGroup() {
         return references != null ? references.getReferencesGroup() : null;
     }
@@ -1478,7 +1496,7 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
         }
     }
 
-    private class AvCallback implements AvPlayer.Callback, AvPlayer.ErrorCallback {
+    private class AvCallback implements AvPlayer.Callback {
         @Override
         public void onSuccess() {
             if (avPlayer != null) {

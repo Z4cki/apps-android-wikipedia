@@ -411,12 +411,6 @@
   <string name="reading_list_deleted">%s বিলোপ কৰা হ\'ল</string>
   <string name="saved_list_empty_title">কোনো পঢ়া তালিকা নাই</string>
   <string name="reading_lists_empty_message">প্ৰবন্ধবোৰ এক পাঠ্য তালিকাত যোগ কৰে যাতে আপুনি অফলাইন থাকিলেও পাছত সেইবোৰ পুনৰ পঢ়িব পাৰে।</string>
-  <string name="reading_lists_onboarding_intro">প্ৰবন্ধবোৰ এক পাঠ্য তালিকাত যোগ কৰক যাতে আপুনি অফলাইন থাকিলেও পাছত সেইবোৰ পুনৰ পঢ়িব পাৰে!</string>
-  <string name="reading_lists_onboarding_for_example">যেনে</string>
-  <string name="reading_lists_onboarding_example1">চাবলগীয়া ঠাই</string>
-  <string name="reading_lists_onboarding_example2">পছন্দৰ জীৱ-জন্তু</string>
-  <string name="reading_lists_onboarding_example3">মহাকাশ অনুসন্ধান</string>
-  <string name="reading_lists_onboarding_got_it">বুজিছোঁ</string>
   <string name="reading_list_empty">এই তালিকাত আপুনি কোনো প্ৰবন্ধ যোগ কৰা নাই।</string>
   <string name="reading_list_article_offline">অফলাইন উপলব্ধ</string>
   <string name="reading_list_article_make_offline">এই প্ৰবন্ধটো অফলাইন উপলব্ধ কৰাওক</string>
@@ -659,6 +653,7 @@
   <string name="suggested_edits_contribution_seen_text">যোৱা ৩০ দিনত %s বাৰ চোৱা হৈছে।</string>
   <string name="suggested_edits_contribution_date_yesterday_text">কালি</string>
   <string name="suggested_edits_encourage_account_creation_title"> আপুনি জানেনে যে ৱিকিপিডিয়াত সকলোৱে সম্পাদনা কৰিব পাৰে?</string>
+  <string name="suggested_edits_image_recommendations_task_goal_progress">সুন্দৰ, জাৰি ৰাখক! 👍</string>
   <string name="description_edit_revert_subtitle">ৱিকিপিডিয়া সম্পাদনা কৰাৰ বাবে ধন্যবাদ!</string>
   <string name="description_edit_revert_intro">আমি বুজিছোঁ যে আপুনি অশেষ চেষ্টা কৰিলে, কিন্তু এজন পৰ্যবেক্ষকে এট আপত্তি দৰ্শাইছে। আপোনাৰ সম্পাদনা বাতিল কৰাৰ সম্ভাব্য কাৰণ হ\'ব পাৰে:</string>
   <string name="description_edit_revert_reason1">আপোনাৰ অৱদানে &lt;a href=\"%1$s\"&gt;নীতিসমূহ&lt;/a&gt; অনুসৰণ কৰা নাই।</string>
@@ -701,6 +696,9 @@
   <string name="edit_conflict_dialog_ok_button_text">বাৰু</string>
   <string name="reverted_edit_dialog_ok_button_text">বাৰু</string>
   <string name="account_editing_blocked_dialog_cancel_button_text">বাতিল কৰক</string>
+  <string name="image_recommendations_task_accept">হয়</string>
+  <string name="image_recommendations_task_reject">নহয়</string>
+  <string name="image_recommendations_task_choice_continue">অব্যাহত ৰাখক</string>
   <string name="wikitext_bold">গাঢ়</string>
   <string name="wikitext_italic">হেলনীয়া</string>
   <string name="wikitext_link">সংযোগ</string>

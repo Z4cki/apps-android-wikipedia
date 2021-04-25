@@ -7,6 +7,7 @@
 * Dvorapa
 * Evica
 * Frettie
+* Georg101
 * Ilimanaq29
 * Jan Myšák
 * Juandev
@@ -224,6 +225,7 @@
   <string name="cc_0_url">https://creativecommons.org/publicdomain/zero/1.0/deed.cs</string>
   <string name="android_app_edit_help_url">https://m.mediawiki.org/wiki/Wikimedia_Apps/Suggested_edits/cs</string>
   <string name="suggested_edits_image_tags_help_url">https://www.mediawiki.org/wiki/Wikimedia_Apps/Suggested_edits/cs#Image_tags</string>
+  <string name="suggested_edits_image_recs_help_url">https://www.mediawiki.org/wiki/Wikimedia_Apps/Suggested_edits/cs#Train_image_algorithm</string>
   <string name="about_libraries_heading">Použité knihovny</string>
   <string name="about_contributors_heading">Přispěvatelé</string>
   <string name="about_contributors">&lt;a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Wikimedia_Apps/Team/Android\"&gt;Stránka produkčního týmu&lt;/a&gt;</string>
@@ -440,12 +442,6 @@
   <string name="reading_list_deleted">Seznam %s byl smazán</string>
   <string name="saved_list_empty_title">Žádné uložené stránky</string>
   <string name="reading_lists_empty_message">Přidávejte články do seznamů k přečtení později, abyste si je mohli přečíst, i když nebudete připojeni k internetu.</string>
-  <string name="reading_lists_onboarding_intro">Přidávejte články do seznamů k přečtení později, abyste si je mohli přecíst, i když nebudete připojeni!</string>
-  <string name="reading_lists_onboarding_for_example">Například</string>
-  <string name="reading_lists_onboarding_example1">Místa k navštívení</string>
-  <string name="reading_lists_onboarding_example2">Oblíbená zvířata</string>
-  <string name="reading_lists_onboarding_example3">Objevování vesmíru</string>
-  <string name="reading_lists_onboarding_got_it">Rozumím</string>
   <string name="reading_list_empty">V tomto seznamu nemáte žádné články.</string>
   <string name="reading_list_article_offline">Dostupné offline</string>
   <string name="reading_list_article_make_offline">Uložit článek do offline režimu</string>

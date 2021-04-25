@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Authors:
+* AJBot2
 * Ahdan
 * Akmaie Ajam
 * Andikbuyung
@@ -9,6 +10,7 @@
 * Beeyan
 * Bennylin
 * Bramadiarya
+* Cooltey
 * Daud I.F. Argana
 * Gombang
 * Hanif Al Husaini
@@ -135,7 +137,7 @@
   <string name="onboarding_card_login">Masuk log</string>
   <string name="page_editing_login">Masuk log</string>
   <string name="reading_lists_sync_login">Masuk log</string>
-  <string name="create_account_login">Masuk</string>
+  <string name="create_account_login">Masuk log</string>
   <string name="menu_login">Masuk log</string>
   <string name="login_activity_title">Masuk log</string>
   <string name="login_in_progress_dialog_message">Sedang masuk log…</string>
@@ -203,7 +205,7 @@
   <string name="preference_title_auto_upload_crash_reports">Kirim laporan kerusakan</string>
   <string name="preference_summary_auto_upload_crash_reports">Izinkan aplikasi untuk mengirimkan laporan kerusakan ke penyedia layanan pihak ketiga secara otomatis sehingga kami dapat meninjau kerusakan Anda dan memperbaiki kesalahan lebih cepat dan lebih gampang.</string>
   <string name="editing_error_spamblacklist">Pranala ke domain yang diblokir (%s) terdeteksi. Harap menghapusnya dan coba lagi.</string>
-  <string name="history_filter_list_hint">Pilih riwayat</string>
+  <string name="history_filter_list_hint">Saring riwayat</string>
   <string name="error_can_not_process_link">Tidak dapat menampilkan pranala ini</string>
   <string name="page_protected_autoconfirmed">Halaman ini telah dilindungi sebagian.</string>
   <string name="page_protected_sysop">Halaman ini telah sepenuhnya dilindungi.</string>
@@ -228,6 +230,7 @@
   <string name="cc_0_url">https://creativecommons.org/publicdomain/zero/1.0/</string>
   <string name="android_app_edit_help_url">https://m.mediawiki.org/wiki/Wikimedia_Apps/Suggested_edits/id</string>
   <string name="suggested_edits_image_tags_help_url">https://www.mediawiki.org/wiki/Wikimedia_Apps/Suggested_edits#Image_tags</string>
+  <string name="suggested_edits_image_recs_help_url">https://www.mediawiki.org/wiki/Wikimedia_Apps/Suggested_edits#Train_image_algorithm</string>
   <string name="about_libraries_heading">Pustaka yang digunakan</string>
   <string name="about_contributors_heading">Kontributor</string>
   <string name="about_contributors">&lt;a href=\"https://www.mediawiki.org/wiki/Wikimedia_Apps/Team/Android\"&gt;Halaman kelompok&lt;/a&gt;</string>
@@ -260,8 +263,8 @@
   <string name="edit_conflict_message">Halaman telah dimodifikasi oleh pengguna yang berbeda, dan bertentangan dengan suntingan Anda. Harap salin suntingan Anda, kembali dan segarkan halaman, lalu coba untuk menyunting lagi.</string>
   <string name="find_next">Cari berikutnya</string>
   <string name="find_previous">Cari sebelumnya</string>
-  <string name="find_first_occurence">Ini adalah kejadian pertama</string>
-  <string name="find_last_occurence">Ini adalah kejadian terakhir</string>
+  <string name="find_first_occurence">Ini adalah hasil pertama</string>
+  <string name="find_last_occurence">Ini adalah hasil terakhir</string>
   <string name="article_opened_in_background_tab">Artikel telah dibuka di tab latar belakang.</string>
   <string name="abusefilter_title_warn">Ini mungkin suntingan yang tidak konstruktif. Apakah Anda yakin ingin menerbitkannya?</string>
   <string name="abusefilter_title_disallow">Anda tidak dapat menerbitkan suntingan ini. Silakan kembali dan mengubahnya.</string>
@@ -449,12 +452,6 @@
   <string name="reading_list_deleted">%s terhapus</string>
   <string name="saved_list_empty_title">Tidak ada daftar bacaan lagi</string>
   <string name="reading_lists_empty_message">Tambahkan artikel ke daftar untuk dibaca nanti, bahkan saat Anda sedang luring.</string>
-  <string name="reading_lists_onboarding_intro">Tambahkan artikel ke daftar untuk dibaca nanti, bahkan saat Anda sedang luring!</string>
-  <string name="reading_lists_onboarding_for_example">Sebagai contoh</string>
-  <string name="reading_lists_onboarding_example1">Tempat untuk berkunjung</string>
-  <string name="reading_lists_onboarding_example2">Hewan kesukaan</string>
-  <string name="reading_lists_onboarding_example3">Penjelajahan luar angkasa</string>
-  <string name="reading_lists_onboarding_got_it">Mengerti</string>
   <string name="reading_list_empty">Anda tidak memiliki artikel yang ditambahkan ke daftar ini.</string>
   <string name="reading_list_article_offline">Tersedia secara luring</string>
   <string name="reading_list_article_make_offline">Jadikan artikel ini tersedia secara luring</string>
@@ -840,6 +837,16 @@
   <string name="suggested_edits_contribution_diff_count_text">%1$s karakter</string>
   <string name="suggested_edits_removed_contribution_label">Anda telah menghapus %d karakter</string>
   <string name="suggested_edits_added_contribution_label">Anda telah menambah %d karakter</string>
+  <string name="suggested_edits_image_recommendations_task_title">Melatih algoritma gambar</string>
+  <string name="suggested_edits_image_recommendations_task_detail">Putuskan apakah gambar yang disarankan akan meningkatkan artikel.</string>
+  <string name="suggested_edits_image_recommendations_task_get_started">Mulai</string>
+  <string name="suggested_edits_image_recommendations_task_goal_progress">Bagus, lanjutkan! 👍</string>
+  <string name="suggested_edits_image_recommendations_task_goal_complete">Tujuan harian tercapai! 👏</string>
+  <string name="suggested_edits_image_recommendations_task_goal_surpassed">Anda telah mencapai tujuan</string>
+  <string name="suggested_edits_image_recommendations_onboarding_tooltip">Sebuah tugas baru Penyuntingan yang Disarankan tersedia. Latih algoritma untuk mencocokkan gambar dengan artikel tanpa gambar.</string>
+  <string name="suggested_edits_image_recommendations_onboarding_text1">Artikel Wikipedia ditulis dan disunting oleh ribuan sukarelawan dari seluruh dunia. Sayangnya, banyak artikel yang kekurangan gambar.\n\nGambar-gambar akan menyarankan Anda untuk menggunakan sebuah algoritma. Algoritma ini akan menarik gambar dari sumber lain dan menyarankan yang cocok dengan artikel yang tidak memiliki gambar.\n\nUmpan balik Anda akan membantu kami untuk meningkatkan saran-saran tersebut sepanjang waktu. Karena tujuan tugas ini untuk meningkatkan gambar-gambar yang disarankan, pencocokan yang Anda buat tidak akan dipublikasikan saat ini.</string>
+  <string name="suggested_edits_image_recommendations_onboarding_text2">Kami ingin Anda untuk menerima kontribusi Anda untuk usaha ini. Maukah Anda jika nama pengguna Anda ditampilkan di halaman pelatihan algoritma kami?</string>
+  <string name="suggested_edits_image_recommendations_onboarding_consent">Ya, nama pengguna saya boleh ditampilkan di halaman pelatihan algoritma</string>
   <string name="file_page_activity_title">Halaman berkas</string>
   <string name="file_page_add_image_caption_button">Tambahkan takarir gambar</string>
   <string name="file_page_add_image_tags_button">Tambahkan tanda gambar</string>
@@ -915,6 +922,23 @@
   <string name="account_editing_blocked_dialog_cancel_button_text">Batal</string>
   <string name="edit_type_all">Semua kontribusi</string>
   <string name="content_description_for_page_indicator">Halaman %1$d dari %2$d</string>
+  <string name="image_recommendations_task_accept">Ya</string>
+  <string name="image_recommendations_task_reject">Tidak</string>
+  <string name="image_recommendations_task_not_sure">Tidak yakin</string>
+  <string name="image_recommendations_task_processing">Memproses...</string>
+  <string name="image_recommendations_task_instruction">Maukah Anda tambahkan gambar ini ke dalam artikel?</string>
+  <string name="image_recommendations_task_choice_no">Mengapa memilih tidak?</string>
+  <string name="image_recommendations_task_choice_unsure">Mengapa Anda tidak yakin dengan gambar ini?</string>
+  <string name="image_recommendations_task_choice_not_relevant">Tidak sesuai</string>
+  <string name="image_recommendations_task_choice_low_quality">Kualitas rendah</string>
+  <string name="image_recommendations_task_choice_noinfo">Tidak cukup informasi</string>
+  <string name="image_recommendations_task_choice_nosubject">Tidak mengetahui subjek ini</string>
+  <string name="image_recommendations_task_choice_offensive">Menyerang</string>
+  <string name="image_recommendations_task_choice_invisible">Tidak dapat melihat gambar</string>
+  <string name="image_recommendations_task_choice_understand">Tidak paham tugas tersebut</string>
+  <string name="image_recommendations_task_choice_other">Lainnya</string>
+  <string name="image_recommendations_task_choice_continue">Lanjutkan</string>
+  <string name="image_recommendations_task_suggestion_reason">&lt;b&gt;Saran alasan:&lt;/b&gt; %s</string>
   <string name="wikitext_bold">Tebal</string>
   <string name="wikitext_italic">Cetak miring</string>
   <string name="wikitext_link">Pranala</string>

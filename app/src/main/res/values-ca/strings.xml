@@ -5,6 +5,7 @@
 * Alan Mena
 * Alvaro Vidal-Abarca
 * Annamerida
+* Cooltey
 * Dbrant
 * F3RaN
 * Fitoschido
@@ -220,6 +221,7 @@
   <string name="cc_0_url">https://creativecommons.org/publicdomain/zero/1.0/deed.ca</string>
   <string name="android_app_edit_help_url">https://m.mediawiki.org/wiki/Wikimedia_Apps/Suggested_edits/ca</string>
   <string name="suggested_edits_image_tags_help_url">https://www.mediawiki.org/wiki/Wikimedia_Apps/Suggested_edits#Image_tags</string>
+  <string name="suggested_edits_image_recs_help_url">https://www.mediawiki.org/wiki/Wikimedia_Apps/Suggested_edits/ca#Algorisme_formació_imatge</string>
   <string name="about_libraries_heading">Biblioteques utilitzades</string>
   <string name="about_contributors_heading">Col·laboradors</string>
   <string name="about_contributors">&lt;a href=\"https://www.mediawiki.org/wiki/Wikimedia_Apps/Team/Android\"&gt;Pàgina de l\'equip&lt;/a&gt;</string>
@@ -440,9 +442,14 @@
   <string name="reading_list_name_hint">Nom de la llista</string>
   <string name="reading_list_description_hint">Descripció (opcional)</string>
   <string name="reading_list_item_deleted">%s suprimit de la llista</string>
+  <string name="reading_list_item_deleted_from_list">%1$s ha estat suprimit de %2$s</string>
   <plurals name="reading_list_articles_deleted">
     <item quantity="one">%d article suprimit de la llista</item>
     <item quantity="other">%d articles suprimits de la llista</item>
+  </plurals>
+  <plurals name="reading_list_articles_deleted_from_list">
+    <item quantity="one">%d article suprimit de %s</item>
+    <item quantity="other">%d articles suprimits de %s</item>
   </plurals>
   <string name="reading_list_items_deleted">%d articles esborrats de la llista</string>
   <string name="reading_lists_item_deleted">%s suprimit de les llistes</string>
@@ -450,12 +457,6 @@
   <string name="reading_list_deleted">%s eliminada</string>
   <string name="saved_list_empty_title">Encara no hi ha cap llista de lectura.</string>
   <string name="reading_lists_empty_message">Afegeix articles a una llista per llegir més endavant, fins i tot quan estigueu fora de línia.</string>
-  <string name="reading_lists_onboarding_intro">Afegeix articles a una llista per llegir més endavant, fins i tot quan estigueu fora de línia!</string>
-  <string name="reading_lists_onboarding_for_example">Per exemple</string>
-  <string name="reading_lists_onboarding_example1">Llocs per visitar</string>
-  <string name="reading_lists_onboarding_example2">Animals preferits</string>
-  <string name="reading_lists_onboarding_example3">Exploració espacial</string>
-  <string name="reading_lists_onboarding_got_it">Entesos</string>
   <string name="reading_list_empty">No teniu articles afegits a la llista.</string>
   <string name="reading_list_article_offline">Disponible fora de línia</string>
   <string name="reading_list_article_make_offline">Fes aquest article disponible fora de línia</string>
@@ -680,6 +681,7 @@
   <string name="description_ends_with_punctuation">El text no ha d\'acabar amb puntuació.</string>
   <string name="description_starts_with_article">Eviteu començar amb articles com \"un\" o \"el\"...</string>
   <string name="description_starts_with_uppercase">Comenceu amb minúscula a menys que la primera paraula sigui un nom propi.</string>
+  <string name="description_starts_with_lowercase">Evita començar per una lletra en minúscula.</string>
   <string name="description_is_in_different_language">El text sembla que estigui en una llengua no esperada. Caldria que fos en %s.</string>
   <string name="description_edit_success_saved">S\'ha publicat la descripció d\'article!</string>
   <string name="description_edit_success_saved_snackbar">S’ha publicat la descripció d\'article.</string>
@@ -743,6 +745,7 @@
   <string name="suggested_edits_image_preview_dialog_caption_in_language_title">Llegenda de la imatge (%s)</string>
   <string name="suggested_edits_image_preview_dialog_description_in_language_title">Descripció de la imatge (%s)</string>
   <string name="suggested_edits_image_preview_dialog_image">Fitxer</string>
+  <string name="suggested_edits_image_preview_dialog_file_commons">Fitxer de Wikimedia Commons</string>
   <string name="suggested_edits_image_preview_dialog_artist">Artista</string>
   <string name="suggested_edits_image_preview_dialog_tags">Etiquetes</string>
   <string name="suggested_edits_image_preview_dialog_date">Data</string>
@@ -863,6 +866,16 @@
     <item quantity="one">heu afegit %d caràcter</item>
     <item quantity="other">heu afegit %d caràcters</item>
   </plurals>
+  <string name="suggested_edits_image_recommendations_task_title">Algorisme  d\'entrenament per imatge</string>
+  <string name="suggested_edits_image_recommendations_task_detail">Decidiu si la imatge suggerida milloraria un article.</string>
+  <string name="suggested_edits_image_recommendations_task_get_started">Inicia</string>
+  <string name="suggested_edits_image_recommendations_task_goal_progress">Fantàstica, som-hi! 👍</string>
+  <string name="suggested_edits_image_recommendations_task_goal_complete">Heu superat l\'objectiu diari! 👏</string>
+  <string name="suggested_edits_image_recommendations_task_goal_surpassed">Heu superat l\'objectiu</string>
+  <string name="suggested_edits_image_recommendations_onboarding_tooltip">Hi ha disponible una nova tasca d\'edicions suggerides. Consisteix a entrenar un algorisme per a fer correspondre imatges amb articles que no en tenen.</string>
+  <string name="suggested_edits_image_recommendations_onboarding_text1">Els articles de la Viquipèdia són escrits i editats per milers de voluntaris d\'arreu del món. Malauradament, molts dels articles no tenen imatges.\n\nSe us suggeriran imatges mitjançant un algorisme. Aquest obtindrà imatges d\'altres fonts i us suggerirà correspondències amb articles que no tinguin imatges.\n\nEls vostres comentaris ens ajudaran a millorar els suggeriments al llarg del temps. Atès que l\'objectiu d\'aquesta tasca és millorar les imatges suggerides, les correspondències que feu no es publicaran en cap moment,</string>
+  <string name="suggested_edits_image_recommendations_onboarding_text2">Voldríem reconèixer la vostra contribució en aquesta tasca. Voldríeu que el vostre nom d\'usuari aparegués a la pàgina d\'entrenament de l\'algorisme?</string>
+  <string name="suggested_edits_image_recommendations_onboarding_consent">Sí, podeu mostrar el meu nom d\'usuari a la pàgina d\'entrenament de l\'algorisme</string>
   <string name="file_page_activity_title">Pàgina de fitxer</string>
   <string name="file_page_add_image_caption_button">Afegir una llegenda a la imatge</string>
   <string name="file_page_add_image_tags_button">Afegir una etiqueta a la imatge</string>
@@ -938,6 +951,28 @@
   <string name="account_editing_blocked_dialog_cancel_button_text">Cancel·la</string>
   <string name="edit_type_all">Totes les contribucions</string>
   <string name="content_description_for_page_indicator">Pàgina %1$d de %2$d</string>
+  <string name="image_recommendations_task_accept">Sí</string>
+  <string name="image_recommendations_task_reject">No</string>
+  <string name="image_recommendations_task_not_sure">No n\'estic segur</string>
+  <string name="image_recommendations_task_processing">S\'està processant…</string>
+  <string name="image_recommendations_task_instruction">Voleu afegir la imatge a l\'article?</string>
+  <string name="image_recommendations_task_choice_no">Per què heu seleccionat «no»?</string>
+  <string name="image_recommendations_task_choice_unsure">Per què no n\'esteu segur de la imatge?</string>
+  <string name="image_recommendations_task_choice_not_relevant">No és rellevant</string>
+  <string name="image_recommendations_task_choice_low_quality">Baixa qualitat</string>
+  <string name="image_recommendations_task_choice_noinfo">Sense prou informació</string>
+  <string name="image_recommendations_task_choice_nosubject">Desconec la temàtica</string>
+  <string name="image_recommendations_task_choice_offensive">Ofensiva</string>
+  <string name="image_recommendations_task_choice_invisible">No puc veure la imatge</string>
+  <string name="image_recommendations_task_choice_understand">No entenc la tasca</string>
+  <string name="image_recommendations_task_choice_language">No es pot llegir la llengua</string>
+  <string name="image_recommendations_task_choice_other">Altre</string>
+  <string name="image_recommendations_task_choice_continue">Continua</string>
+  <string name="image_recommendations_task_suggestion_reason">&lt;b&gt;Motiu suggerit:&lt;/b&gt; %s</string>
+  <string name="image_recommendations_faq">PMF</string>
+  <string name="image_recommendations_tooltip1">Reviseu l\'article per a entendre\'n el tema.</string>
+  <string name="image_recommendations_tooltip2">Inspecciona la imatge i la informació associada.</string>
+  <string name="image_recommendations_tooltip3">Decidiu si la imatge ajudarà als lectors a entendre millor el tema.</string>
   <string name="wikitext_bold">Negreta</string>
   <string name="wikitext_italic">Cursiva</string>
   <string name="wikitext_link">Enllaç</string>
