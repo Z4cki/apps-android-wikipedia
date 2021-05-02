@@ -447,9 +447,14 @@
   <string name="reading_list_name_hint">Listan nimi</string>
   <string name="reading_list_description_hint">Kuvaus (ei pakollinen)</string>
   <string name="reading_list_item_deleted">%s poistettu listasta</string>
+  <string name="reading_list_item_deleted_from_list">%1$s poistettu listasta %2$s</string>
   <plurals name="reading_list_articles_deleted">
     <item quantity="one">%d artikkeli poistettu listalta</item>
     <item quantity="other">%d artikkelia poistettu listalta</item>
+  </plurals>
+  <plurals name="reading_list_articles_deleted_from_list">
+    <item quantity="one">%d artikkeli poistettu lukulistalta %s</item>
+    <item quantity="other">%d artikkelia poistettu lukulistalta %s</item>
   </plurals>
   <string name="reading_list_items_deleted">%d artikkelia poistettu listasta</string>
   <string name="reading_lists_item_deleted">%s poistettu listoista</string>
@@ -870,7 +875,7 @@
   <string name="suggested_edits_image_recommendations_task_get_started">Aloita</string>
   <string name="suggested_edits_image_recommendations_task_goal_progress">Hienoa, jatka samaan tahtiin! 👍</string>
   <string name="suggested_edits_image_recommendations_task_goal_complete">Päivittäinen tavoite saavutettu! 👏</string>
-  <string name="suggested_edits_image_recommendations_task_goal_surpassed">Olet saavuttanut tavoitteen</string>
+  <string name="suggested_edits_image_recommendations_task_goal_surpassed" fuzzy="true">Olet saavuttanut tavoitteen</string>
   <string name="suggested_edits_image_recommendations_onboarding_tooltip">Uusi Ehdotetut muutokset -tehtävä on nyt tarjolla. Opeta algoritmi yhdistämään kuvia kuvittamattomiin artikkeleihin.</string>
   <string name="file_page_activity_title">Tiedostosivu</string>
   <string name="file_page_add_image_caption_button">Lisää kuvateksti</string>
@@ -999,6 +1004,7 @@
   <string name="menu_option_share_edit">Jaa muokkaus</string>
   <string name="menu_option_user_profile">Käyttäjän %s profiili</string>
   <string name="menu_option_user_contributions">Käyttäjän %s muokkaukset</string>
+  <string name="watchlist_details_watching_label">Tarkkailemassa</string>
   <string name="watchlist_details_watch_label">Tarkkaile</string>
   <string name="thank_label">Kiitä</string>
   <string name="go_to_user_page">Siirry käyttäjäsivulle</string>
